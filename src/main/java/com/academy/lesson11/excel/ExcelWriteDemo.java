@@ -17,7 +17,8 @@ public class ExcelWriteDemo {
         Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet();
         Row row = sheet.createRow(0);
-        Cell cell = row.createCell(0);
+        Cell cell = row.createCell(0); // firstName
+//        Cell cellLastName = row.createCell(1); // firstName
         cell.setCellValue(name);
 
         try (FileOutputStream fos = new FileOutputStream(path)) {
