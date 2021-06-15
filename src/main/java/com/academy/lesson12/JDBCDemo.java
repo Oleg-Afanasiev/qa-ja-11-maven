@@ -75,7 +75,7 @@ public class JDBCDemo {
             System.out.println("error read property. Details: " + e.getMessage());
             return null;
         }
-        String value = properties.getProperty(key);
+        String value = properties.getProperty(key); // читаем нужное проперти
         return value;
     }
 }
