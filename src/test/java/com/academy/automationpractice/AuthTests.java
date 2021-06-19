@@ -19,6 +19,7 @@ public class AuthTests {
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
+        System.setProperty("webdriver.chrome.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = "https://www.google.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
