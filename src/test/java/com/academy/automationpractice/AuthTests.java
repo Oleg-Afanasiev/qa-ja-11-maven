@@ -16,11 +16,14 @@ public class AuthTests {
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
+        // инициализация Chrome
 //        System.setProperty("webdriver.chrome.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/chromedriver.exe");
 //        driver = new ChromeDriver();
+        // инициализация Firefox
         System.setProperty("webdriver.gecko.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/geckodriver.exe");
         driver = new FirefoxDriver();
         baseUrl = "http://automationpractice.com/index.php";
+        // настройка ожиданий
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
