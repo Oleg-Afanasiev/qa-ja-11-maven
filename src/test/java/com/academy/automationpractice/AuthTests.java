@@ -2,32 +2,31 @@ package com.academy.automationpractice;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
-
-import static org.testng.Assert.fail;
 
 public class AuthTests {
     private WebDriver driver;
     private String baseUrl;
-    private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
 
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-        baseUrl = "https://www.google.com/";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        System.setProperty("webdriver.chrome.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/chromedriver.exe");
+//        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/geckodriver.exe");
+        driver = new FirefoxDriver();
+        baseUrl = "http://automationpractice.com/index.php";
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @Test
-    public void testUntitledTestCase() throws Exception {
-        driver.get("http://automationpractice.com/index.php");
+    public void testAuthError() throws Exception {
+        driver.get(baseUrl);
         driver.findElement(By.linkText("Sign in")).click();
         driver.findElement(By.id("email")).click();
         driver.findElement(By.id("email")).clear();
@@ -43,9 +42,5 @@ public class AuthTests {
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
         driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
     }
 }
