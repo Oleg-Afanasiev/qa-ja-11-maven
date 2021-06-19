@@ -1,6 +1,7 @@
 package com.academy.lesson12;
 
 import com.academy.lesson05.Gender;
+import com.academy.util.PropertyProvider;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class JDBCDemo {
     public static void main(String[] args) {
         // select
 //        String url = "jdbc:mysql://localhost:3306/phone-book?user=root&password=root";
-        String url = readPropertyValue("jdbc.url");
+        String url = PropertyProvider.get("jdbc.url");
         String sqlSelect = "select * from subscriber";
         String sqlInsert = "insert into subscriber " +
                 "(first_name, last_name, age, gender) " +
@@ -64,18 +65,5 @@ public class JDBCDemo {
         } catch (SQLException e) {
             System.out.println("JDBC error. Details: " + e.getMessage());
         }
-    }
-
-    public static String readPropertyValue(String key) {
-        Properties properties = new Properties();
-        InputStream is = JDBCDemo.class.getClassLoader().getResourceAsStream("config.properties");
-        try {
-            properties.load(is);
-        } catch (IOException e) {
-            System.out.println("error read property. Details: " + e.getMessage());
-            return null;
-        }
-        String value = properties.getProperty(key); // читаем нужное проперти
-        return value;
     }
 }

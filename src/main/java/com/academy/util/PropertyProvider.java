@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyProvider {
-    private static final String DEFAULT_PROP_FILE = "default-cfg.properties";
+    private static final String DEFAULT_PROP_FILE = "config.properties";
     private static Properties prop;
 
     // блок статической инициализации

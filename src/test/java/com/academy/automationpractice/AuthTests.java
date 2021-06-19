@@ -1,5 +1,6 @@
 package com.academy.automationpractice;
 
+import com.academy.util.PropertyProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,10 +18,10 @@ public class AuthTests {
     @BeforeClass(alwaysRun = true)
     public void setUp() throws Exception {
         // инициализация Chrome
-//        System.setProperty("webdriver.chrome.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", PropertyProvider.get("driver.chrome"));
 //        driver = new ChromeDriver();
         // инициализация Firefox
-        System.setProperty("webdriver.gecko.driver", "C:/Users/af_oleg/Documents/QA-JA-11/maven-project/drivers/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", PropertyProvider.get("driver.firefox"));
         driver = new FirefoxDriver();
         baseUrl = "http://automationpractice.com/index.php";
         // настройка ожиданий
